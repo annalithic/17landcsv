@@ -49,15 +49,16 @@ namespace _17LandsSheet {
 
         static void Main(string[] args) {
 
-            
+
+            string name = args.Length > 0 ? args[0] : "dmu.txt";
 
             List<Card> cards = new List<Card>();
-            string[] lines = File.ReadAllLines("data.txt");
+            string[] lines = File.ReadAllLines(name);
             for (int i = 0; i < lines.Length; i += 2) {
 
                 Card c = new Card();
                 c.name = lines[i];
-                string[] words = lines[i + 1].Split('\t');
+                string[] words = lines[i + 1].Split(new char[]{'\t'}, StringSplitOptions.None);
                 c.color = words[1];
                 c.rarity = words[2];
 
@@ -113,7 +114,7 @@ namespace _17LandsSheet {
                 }
             }
 
-            Console.WriteLine("WHITE|ATA|WR|IWD||BLUE|ATA|WR|IWD||BLACK|ATA|WR|IWD||RED|ATA|WR|IWD||GREEN|ATA|WR|IWD|||MULTI|ATA|WR|IWD||W|U|B|R|G|M");
+            Console.WriteLine("WHITE|ATA|WR|IWD||BLUE|ATA|WR|IWD||BLACK|ATA|WR|IWD||RED|ATA|WR|IWD||GREEN|ATA|WR|IWD|||MULTI|ATA|WR|IWD|||W|J|B|R|G|M");
 
             int line = 0;
             bool keepDoingLines = true;
@@ -124,8 +125,8 @@ namespace _17LandsSheet {
                 if (line < b.Count) { keepDoingLines = true; WriteCard(b[line]); } else Console.Write("|||||");
                 if (line < r.Count) { keepDoingLines = true; WriteCard(r[line]); } else Console.Write("|||||");
                 if (line < g.Count) { keepDoingLines = true; WriteCard(g[line]); } else Console.Write("|||||");
-                if (line < m.Count) { keepDoingLines = true; Console.Write(m[line].color + "|"); WriteCard(m[line]); } else Console.Write("|||||");
-                Console.Write("|");
+                if (line < m.Count) { keepDoingLines = true; Console.Write(m[line].color + "|"); WriteCard(m[line]); } else Console.Write("||||||");
+                //Console.Write("|");
                 if (line < w.Count) Console.Write(w[line].rarity + "|"); else Console.Write("|");
                 if (line < u.Count) Console.Write(u[line].rarity + "|"); else Console.Write("|");
                 if (line < b.Count) Console.Write(b[line].rarity + "|"); else Console.Write("|");
