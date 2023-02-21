@@ -50,15 +50,15 @@ namespace _17LandsSheet {
         static void Main(string[] args) {
 
 
-            string name = args.Length > 0 ? args[0] : "dmu.txt";
+            string name = args.Length > 0 ? args[0] : "one2.txt";
 
             List<Card> cards = new List<Card>();
             string[] lines = File.ReadAllLines(name);
-            for (int i = 0; i < lines.Length; i += 2) {
+            for (int i = 1; i < lines.Length; i++) {
 
                 Card c = new Card();
-                c.name = lines[i];
-                string[] words = lines[i + 1].Split(new char[]{'\t'}, StringSplitOptions.None);
+                string[] words = lines[i].Split(new char[]{'\t'}, StringSplitOptions.None);
+                c.name = words[0];
                 c.color = words[1];
                 c.rarity = words[2];
 
