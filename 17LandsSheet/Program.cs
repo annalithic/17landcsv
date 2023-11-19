@@ -18,6 +18,7 @@ namespace _17LandsSheet {
             public float ata;
 
             public int gp;
+            public float pr;
             public float gpwr;
 
             public int oh;
@@ -50,7 +51,7 @@ namespace _17LandsSheet {
         static void Main(string[] args) {
 
 
-            string name = args.Length > 0 ? args[0] : "one2.txt";
+            string name = args.Length > 0 ? args[0] : "lci.txt";
 
             List<Card> cards = new List<Card>();
             string[] lines = File.ReadAllLines(name);
@@ -69,21 +70,22 @@ namespace _17LandsSheet {
                 c.ata = ParseFloat(words[6]);
 
                 c.gp = ParseInt(words[7]);
-                c.gpwr = ParsePercent(words[8]);
+                c.pr = ParsePercent(words[8]);
+                c.gpwr = ParsePercent(words[9]);
 
-                c.oh = ParseInt(words[9]);
-                c.ohwr = ParsePercent(words[10]);
+                c.oh = ParseInt(words[10]);
+                c.ohwr = ParsePercent(words[11]);
 
-                c.gd = ParseInt(words[11]);
-                c.gdwr = ParsePercent(words[12]);
+                c.gd = ParseInt(words[12]);
+                c.gdwr = ParsePercent(words[13]);
 
-                c.gih = ParseInt(words[13]);
-                c.gihwr = ParsePercent(words[14]);
+                c.gih = ParseInt(words[14]);
+                c.gihwr = ParsePercent(words[15]);
 
-                c.gnd = ParseInt(words[15]);
-                c.gndwr = ParsePercent(words[16]);
+                c.gnd = ParseInt(words[16]);
+                c.gndwr = ParsePercent(words[17]);
 
-                c.iwd = ParsePercent(words[17], 'p');
+                c.iwd = ParsePercent(words[18], 'p');
 
                 cards.Add(c);
             }
